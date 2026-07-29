@@ -128,7 +128,7 @@ Xmax = Param_perturb.Sin/Param_perturb.a;
 U1D = (U1D-U1D(1))./(max(U1D)-min(U1D));
 plot(X1D, U1D);
 
-markerX_2 = yd(1,1);    
+markerX_2 = yp(1,1);    
 markerY_2 = interp1(X1D, U1D, markerX_2);
 
 markerX_5 = yp(end,1);
