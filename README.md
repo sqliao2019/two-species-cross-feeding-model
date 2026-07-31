@@ -4,7 +4,7 @@
 
 This repository contains the MATLAB source code used to generate the modeling results presented in Fig. 2b and Fig. 2d–g of the manuscript:
 
-**Interaction Topology Underpins the Resilience of Microbial Mutualism**
+**Probing the Stability Landscape of a Synthetic Cross-Feeding Microbial Mutualism**
 
 The code implements a reduced model of a two-species cross-feeding community and generates the vector field, perturbation trajectories, landscape representations, and bifurcation diagrams described in the manuscript.
 
