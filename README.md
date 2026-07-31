@@ -87,7 +87,3 @@ Each main script completed within a few seconds on the tested system. The exact 
 ## Figure Preparation
 
 The MATLAB scripts reproduce the model-derived content of the figures. Final panel assembly and cosmetic formatting were performed in Adobe Illustrator. These graphical adjustments did not alter the calculated vector field, equilibrium positions, bifurcation results, or the population-axis positions of the landscape state markers.
-
-## Code Availability
-
-The code associated with this study is provided in this repository.
