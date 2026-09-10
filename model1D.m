@@ -1,7 +1,6 @@
 function dydt = model1D(t,y,paramSym)
 % 1D Model equation
 % paramSym: the struct of parameters
-% inputSym: the struct of input substrate/metabolite concentrations
 
 % reduced 1-D model
 X = y(1); % cell population of single species

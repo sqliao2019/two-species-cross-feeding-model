@@ -10,7 +10,9 @@ S1 = Param.S1in - Param.a1 .* X1;
 S2 = Param.S2in - Param.a2 .* X2;
 M1 = Param.M1in + Param.k1 .* X1 - Param.b2 .* X2;
 M2 = Param.M2in + Param.k2 .* X2 - Param.b1 .* X1;
-mask = S1<-1e-5 | S2<-1e-5 | M1<-1e-5 | M2<-1e-5;
+
+tol = 0;
+mask = S1<-tol | S2<-tol | M1<-tol | M2<-tol;
 
 Fx1 = (Param.U1(S1,M2) - Param.dilution).* X1;
 Fx2 = (Param.U2(S2,M1) - Param.dilution).* X2;
@@ -48,11 +50,29 @@ colormap(cmap);
 cb = colorbar;
 cb.Label.String = 'Vector magnitude';
 
-plot(x1v, Param.b1 ./Param.k2 .*x1v, 'k');
-plot(Param.b2 ./Param.k1 .*x1v, x2v, 'k');
+plot(x1v, (Param.b1 .*x1v - Param.M2in) ./Param.k2 , 'k');
+plot((Param.b2 .*x2v - Param.M1in) ./Param.k1 , x2v, 'k');
 
+
+% Fixed points and separatrices
 fixedPoint = solveFixedPoint(Param);
-plot(fixedPoint{1,1}(1), fixedPoint{1,1}(2), 'o', 'MarkerEdgeColor','none','MarkerFaceColor',[0.1 0.1 0.1]);
-plot(fixedPoint{2,3}(:,1), fixedPoint{2,3}(:,2),'k');
-plot(fixedPoint{2,1}(1), fixedPoint{2,1}(2), 'o', 'MarkerEdgeColor','none','MarkerFaceColor',[1 1 1]);
-plot(fixedPoint{3,1}(1), fixedPoint{3,1}(2), 'o', 'MarkerEdgeColor','none','MarkerFaceColor',[0.1 0.1 0.1]);
+for i = 1:size(fixedPoint,1)
+
+    xy = fixedPoint{i,1};
+
+    % Plot steady state according to stability
+    switch fixedPoint{i,2}
+        case 1          % stable
+            plot(xy(1), xy(2), 'o', 'MarkerEdgeColor','k', 'MarkerFaceColor',[0.1 0.1 0.1]);
+        case 2          % non-hyperbolic
+            plot(xy(1), xy(2), 'o', 'MarkerEdgeColor','k', 'MarkerFaceColor',[0.5 0.5 0.5]);
+        case 0          % unstable
+            plot(xy(1), xy(2), 'o', 'MarkerEdgeColor','k', 'MarkerFaceColor',[1 1 1]);
+            % Plot separatrix for saddle point
+            if ~isempty(fixedPoint{i,3})
+                plot(fixedPoint{i,3}(:,1), fixedPoint{i,3}(:,2), 'k');
+            end
+    end
+
+
+end

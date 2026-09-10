@@ -1,7 +1,7 @@
 function Param = getPara(x)
 %   PARAM = GETPARA(X) returns a struct of parameters and derived function 
-%   handles for the model. X provides the numeric value(s) for internal
-%   parameters that are used inside anonymous expressions.
+%   handles for the model. X is used for convenient parameter perturbation 
+%   in the analysis.
 
 % Input
 Param.S1in = 5;
