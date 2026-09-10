@@ -1,6 +1,3 @@
-input.Sin = 5;
-input.Min = 0.0;
-
 Param = makeSym(getPara(5));
 
 ScanParam1D(Param, 'k', [0.1 0.4], 10000);

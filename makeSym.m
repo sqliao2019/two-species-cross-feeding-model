@@ -1,7 +1,7 @@
 function ParamSym = makeSym(Param)
 % keep only base names
 
-% Inpuy
+% Input
 ParamSym.Sin = Param.S1in;
 ParamSym.Min = Param.M1in;
 
